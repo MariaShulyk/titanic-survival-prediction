@@ -42,5 +42,5 @@ streamlit run ai_project_teamX/ui/app.py --server.port 8501
 
 ## Links  
 - **Repo:** *https://github.com/PJATK-ASI-2024/ai_project_titanic*  
-- **Project Board:**  
+- **Project Board:** *https://github.com/orgs/PJATK-ASI-2024/projects/219/views/1*
 - **Docs / Architecture:**   
