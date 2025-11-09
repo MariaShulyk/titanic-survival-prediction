@@ -3,7 +3,7 @@
 ## Project Overview  
 - **Problem type:** Classification  
 - **Business value:** The goal is to predict which passengers were more likely to survive the Titanic disaster based on demographic and socio-economic features. The model can help understand human survival patterns and factors influencing decision-making in critical situations.  
-- **Data source:** [Kaggle Titanic Dataset](https://www.kaggle.com/c/titanic/data) that includes passenger demographics, class, fare, and survival information.  
+- **Data source:** [Kaggle Titanic Dataset](https://www.kaggle.com/datasets/yasserh/titanic-dataset) that includes passenger demographics, class, fare, and survival information.  
 
 ## Architecture  
 See `docs/architecture_diagram.png` and sections below.  
