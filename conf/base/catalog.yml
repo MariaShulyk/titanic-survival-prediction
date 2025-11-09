@@ -1,4 +1,49 @@
-# Here you can define all your datasets by using simple YAML syntax.
-#
-# Documentation for this file format can be found in "The Data Catalog"
-# Link: https://docs.kedro.org/en/stable/data/data_catalog.html
+raw_titanic:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/Titanic-Dataset.csv
+  load_args:
+    sep: ","
+    encoding: utf-8
+    low_memory: false
+
+eda_basic_stats:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/eda_basic_stats.csv
+
+eda_missing_summary:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/eda_missing_summary.csv
+
+eda_correlations:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/eda_correlations.csv
+
+eda_outliers_iqr:
+  type: pandas.CSVDataSet
+  filepath: data/02_intermediate/eda_outliers_iqr.csv
+
+
+
+
+
+
+eda_plots_hist:
+  type: matplotlib.MatplotlibWriter
+  filepath: docs/plots/histograms.png
+
+eda_plots_box:
+  type: matplotlib.MatplotlibWriter
+  filepath: docs/plots/boxplots.png
+
+eda_plots_count:
+  type: matplotlib.MatplotlibWriter
+  filepath: docs/plots/countplots.png
+
+eda_plots_corr_heatmap:
+  type: matplotlib.MatplotlibWriter
+  filepath: docs/plots/corr_heatmap.png
+
+eda_plots_pairplot:
+  type: matplotlib.MatplotlibWriter
+  filepath: docs/plots/pairplot.png
+
