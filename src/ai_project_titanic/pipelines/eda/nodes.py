@@ -9,7 +9,6 @@ log = logging.getLogger(__name__)
 
 def basic_stats(df: pd.DataFrame) -> pd.DataFrame:
     log.info("DF shape: %s rows, %s cols", *df.shape)
-    # desc = df.describe(include="all", datetime_is_numeric=True).T
     desc = df.describe(include="all").transpose()
     dtypes = df.dtypes.astype(str).rename("dtype")
     out = desc.merge(dtypes.to_frame(), left_index=True, right_index=True, how="left")
