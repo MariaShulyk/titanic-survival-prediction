@@ -1,0 +1,8 @@
+column,iqr_low,iqr_high,outliers_count
+Parch,0.0,0.0,213
+Fare,-26.724,65.6344,116
+SibSp,-1.5,2.5,46
+Age,-6.6875,64.8125,11
+PassengerId,-444.0,1336.0,0
+Survived,-1.5,2.5,0
+Pclass,0.5,4.5,0
