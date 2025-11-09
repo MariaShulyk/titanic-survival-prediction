@@ -1,5 +1,5 @@
 raw_titanic:
-  type: pandas.CSVDataSet
+  type: pandas.CSVDataset
   filepath: data/01_raw/Titanic-Dataset.csv
   load_args:
     sep: ","
@@ -7,19 +7,19 @@ raw_titanic:
     low_memory: false
 
 eda_basic_stats:
-  type: pandas.CSVDataSet
+  type: pandas.CSVDataset
   filepath: data/02_intermediate/eda_basic_stats.csv
 
 eda_missing_summary:
-  type: pandas.CSVDataSet
+  type: pandas.CSVDataset
   filepath: data/02_intermediate/eda_missing_summary.csv
 
 eda_correlations:
-  type: pandas.CSVDataSet
+  type: pandas.CSVDataset
   filepath: data/02_intermediate/eda_correlations.csv
 
 eda_outliers_iqr:
-  type: pandas.CSVDataSet
+  type: pandas.CSVDataset
   filepath: data/02_intermediate/eda_outliers_iqr.csv
 
 
