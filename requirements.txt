@@ -20,3 +20,5 @@ notebook
 
 pyyaml
 requests
+
+pytest
