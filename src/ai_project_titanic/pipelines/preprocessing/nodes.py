@@ -11,7 +11,6 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     df["Age"].fillna(df["Age"].median(), inplace=True)
     df["Embarked"].fillna(df["Embarked"].mode()[0], inplace=True)
 
-    # Cabin: zbyt dużo braków – zamieniamy na informację binarną
     df["CabinKnown"] = df["Cabin"].notna().astype(int)
     df.drop(columns=["Cabin"], inplace=True)
 
