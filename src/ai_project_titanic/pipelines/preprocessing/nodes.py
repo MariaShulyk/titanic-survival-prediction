@@ -8,8 +8,8 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     df["Age"] = pd.to_numeric(df["Age"], errors="coerce")
     df["Fare"] = pd.to_numeric(df["Fare"], errors="coerce")
 
-    df["Age"].fillna(df["Age"].median(), inplace=True)
-    df["Embarked"].fillna(df["Embarked"].mode()[0], inplace=True)
+    df["Age"] = df["Age"].fillna(df["Age"].median())
+    df["Embarked"] = df["Embarked"].fillna(df["Embarked"].mode()[0])
 
     df["CabinKnown"] = df["Cabin"].notna().astype(int)
     df.drop(columns=["Cabin"], inplace=True)
@@ -26,6 +26,7 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
     df["Age"] = remove_outliers_iqr(df["Age"])
 
     return df
+
 
 
 def scale_data(df: pd.DataFrame) -> pd.DataFrame:
