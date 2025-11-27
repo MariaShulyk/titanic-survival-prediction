@@ -6,7 +6,7 @@ def create_pipeline(**kwargs):
     return Pipeline([
         node(
             func=clean_data,
-            inputs="raw_data",
+            inputs="raw_titanic",
             outputs="clean_data",
             name="clean_data_node"
         ),
