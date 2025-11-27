@@ -51,23 +51,23 @@ eda_plots_pairplot:
 
 
 clean_data:
-  type: pandas.CSVDataSet
+  type: pandas.CSVDataset
   filepath: data/02_intermediate/clean_data.csv
 
 scaled_data:
-  type: pandas.CSVDataSet
+  type: pandas.CSVDataset
   filepath: data/03_primary/scaled_data.csv
 
 train_data:
-  type: pandas.CSVDataSet
+  type: pandas.CSVDataset
   filepath: data/05_model_input/train.csv
 
 val_data:
-  type: pandas.CSVDataSet
+  type: pandas.CSVDataset
   filepath: data/05_model_input/val.csv
 
 test_data:
-  type: pandas.CSVDataSet
+  type: pandas.CSVDataset
   filepath: data/05_model_input/test.csv
 
 
