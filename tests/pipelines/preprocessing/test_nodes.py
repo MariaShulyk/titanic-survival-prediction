@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 from ai_project_titanic.pipelines.preprocessing.nodes import (
     clean_data,
@@ -33,10 +34,10 @@ def test_scale_data_standardized():
     scaled = scale_data(df)
 
     age_mean = scaled["Age"].mean()
-    fare_std = scaled["Fare"].std()
+    fare_std = scaled["Fare"].std(ddof=0)
 
-    assert abs(age_mean) < 1e-6
-    assert abs(fare_std - 1) < 1e-6
+    assert np.isclose(age_mean, 0.0, atol=1e-6)
+    assert np.isclose(fare_std, 1.0, atol=1e-6)
 
 
 def test_split_data_shapes():
