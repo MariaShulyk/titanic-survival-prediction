@@ -71,3 +71,44 @@ test_data:
   filepath: data/05_model_input/test.csv
 
 
+
+
+
+baseline_model:
+  type: pickle.PickleDataset
+  filepath: data/reporting/baseline_model.pkl
+
+baseline_metrics:
+  type: json.JSONDataset
+  filepath: data/reporting/baseline_metrics.json
+
+automl_model:
+  type: pickle.PickleDataset
+  filepath: data/reporting/automl_model.pkl
+
+automl_results:
+  type: pandas.CSVDataset
+  filepath: data/reporting/automl_results.csv
+
+automl_metrics:
+  type: json.JSONDataset
+  filepath: data/reporting/automl_metrics.json
+
+custom_model:
+  type: pickle.PickleDataset
+  filepath: data/reporting/custom_model.pkl
+
+custom_metrics:
+  type: json.JSONDataset
+  filepath: data/reporting/custom_metrics.json
+
+best_model:
+  type: pickle.PickleDataset
+  filepath: data/reporting/best_model.pkl
+
+model_comparison:
+  type: json.JSONDataset
+  filepath: data/reporting/model_comparison.json
+
+
+
