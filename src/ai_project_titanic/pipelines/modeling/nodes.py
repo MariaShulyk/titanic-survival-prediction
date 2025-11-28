@@ -68,7 +68,14 @@ def train_automl(
         html=False,
     )
 
-    best_model = compare_models(exclude=["lightgbm"])  # nie dziala na MACu =(
+    best_model = compare_models(
+        exclude=["lightgbm"], # nie dziala na MACu =(
+        n_select=1,
+    )
+
+    if isinstance(best_model, list):
+        best_model = best_model[0]
+
     results_df = pull().reset_index(drop=True)
 
     preds = predict_model(best_model, data=val_data.copy())
