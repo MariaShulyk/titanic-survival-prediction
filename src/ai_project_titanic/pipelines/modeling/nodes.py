@@ -65,11 +65,10 @@ def train_automl(
         target=TARGET_COL,
         session_id=42,
         verbose=False,
-        silent=True,
         html=False,
     )
 
-    best_model = compare_models()
+    best_model = compare_models(exclude=["lightgbm"])  # nie dziala na MACu =(
     results_df = pull().reset_index(drop=True)
 
     preds = predict_model(best_model, data=val_data.copy())
