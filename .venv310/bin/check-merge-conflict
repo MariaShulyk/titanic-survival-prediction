@@ -1,0 +1,7 @@
+#!/Users/mariiashulyk/Documents/PycharmProjects/ai_project_titanic/.venv310/bin/python3.10
+import sys
+from pre_commit_hooks.check_merge_conflict import main
+if __name__ == '__main__':
+    if sys.argv[0].endswith('.exe'):
+        sys.argv[0] = sys.argv[0][:-4]
+    sys.exit(main())

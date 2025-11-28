@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="Python 3.9 (ai_project_titanic)" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.9 (ai_project_titanic)" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.10 virtualenv at ~/Documents/PycharmProjects/ai_project_titanic/.venv310" project-jdk-type="Python SDK" />
 </project>
