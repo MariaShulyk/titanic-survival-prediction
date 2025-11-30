@@ -30,11 +30,16 @@ def clean_data(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def scale_data(df: pd.DataFrame) -> pd.DataFrame:
-    numeric_cols = df.select_dtypes(include=[np.number]).columns
+    TARGET_COL = "Survived"
+    df_scaled = df.copy()
+
+    numeric_cols = df_scaled.select_dtypes(include=[np.number]).columns.tolist()
+
+    if TARGET_COL in numeric_cols:
+        numeric_cols.remove(TARGET_COL)
 
     scaler = StandardScaler()
-    df_scaled = df.copy()
-    df_scaled[numeric_cols] = scaler.fit_transform(df[numeric_cols])
+    df_scaled[numeric_cols] = scaler.fit_transform(df_scaled[numeric_cols])
 
     return df_scaled
 
