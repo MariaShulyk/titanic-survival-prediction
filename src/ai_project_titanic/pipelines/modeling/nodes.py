@@ -57,6 +57,7 @@ def train_baseline(
 
 
 def train_automl(
+
     train_data: pd.DataFrame, val_data: pd.DataFrame
 ) -> tuple[object, pd.DataFrame, Dict[str, Any]]:
 
@@ -68,12 +69,11 @@ def train_automl(
         html=False,
     )
 
-    best_model = compare_models(
-        exclude=["lightgbm"], # nie dziala na MACu =(
-        n_select=1,
-    )
+    best_model = compare_models(n_select=1, sort="Accuracy")
 
     if isinstance(best_model, list):
+        if len(best_model) == 0:
+            raise RuntimeError("compare_models zwrócił pustą listę modeli – coś poszło nie tak z treningiem.")
         best_model = best_model[0]
 
     results_df = pull().reset_index(drop=True)
@@ -103,10 +103,31 @@ def train_custom(
     train_data: pd.DataFrame, val_data: pd.DataFrame
 ) -> tuple[RandomForestClassifier, Dict[str, Any]]:
     """
-    Własny model ML: RandomForestClassifier z ręcznie dobranymi hiperparametrami. Trenujemy na train, oceniamy na val.
+    Własny model ML: RandomForestClassifier z prostym preprocessingiem:
+    - cechy numeryczne,
+    - one-hot encoding dla wybranych zmiennych kategorycznych (Sex, Embarked).
+    Trenujemy na train, oceniamy na val.
     """
     X_train, y_train = _split_X_y(train_data)
     X_val, y_val = _split_X_y(val_data)
+
+    categorical_cols = [col for col in ["Sex", "Embarked"] if col in X_train.columns]
+    numeric_cols = X_train.select_dtypes(include=[np.number]).columns.tolist()
+
+    X_train_num = X_train[numeric_cols].copy()
+    X_val_num = X_val[numeric_cols].copy()
+
+    if categorical_cols:
+        X_train_cat = pd.get_dummies(X_train[categorical_cols], drop_first=True)
+        X_val_cat = pd.get_dummies(X_val[categorical_cols], drop_first=True)
+
+        X_val_cat = X_val_cat.reindex(columns=X_train_cat.columns, fill_value=0)
+    else:
+        X_train_cat = pd.DataFrame(index=X_train.index)
+        X_val_cat = pd.DataFrame(index=X_val.index)
+
+    X_train_final = pd.concat([X_train_num, X_train_cat], axis=1)
+    X_val_final = pd.concat([X_val_num, X_val_cat], axis=1)
 
     model = RandomForestClassifier(
         n_estimators=200,
@@ -117,17 +138,18 @@ def train_custom(
         n_jobs=-1,
     )
 
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_val)
+    model.fit(X_train_final, y_train)
+    y_pred = model.predict(X_val_final)
     if hasattr(model, "predict_proba"):
-        y_proba = model.predict_proba(X_val)[:, 1]
+        y_proba = model.predict_proba(X_val_final)[:, 1]
     else:
         y_proba = None
 
     metrics = _compute_metrics(y_val, y_pred, y_proba=y_proba)
-    metrics["model_type"] = "random_forest_custom"
+    metrics["model_type"] = "random_forest_custom_with_dummies"
 
     return model, metrics
+
 
 
 def evaluate_models(
