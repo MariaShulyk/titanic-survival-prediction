@@ -1,0 +1,8 @@
+{
+  "accuracy": 0.8208955223880597,
+  "precision": 0.9,
+  "recall": 0.703125,
+  "f1": 0.7894736842105263,
+  "roc_auc": 0.24776785714285715,
+  "model_type": "pycaret_automl_best"
+}

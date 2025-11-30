@@ -1,0 +1,28 @@
+{
+  "baseline": {
+    "accuracy": 0.5223880597014925,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "roc_auc": NaN,
+    "model_type": "baseline_dummy_most_frequent"
+  },
+  "automl": {
+    "accuracy": 0.8208955223880597,
+    "precision": 0.9,
+    "recall": 0.703125,
+    "f1": 0.7894736842105263,
+    "roc_auc": 0.24776785714285715,
+    "model_type": "pycaret_automl_best"
+  },
+  "custom": {
+    "accuracy": 0.8283582089552238,
+    "precision": 0.8867924528301887,
+    "recall": 0.734375,
+    "f1": 0.8034188034188035,
+    "roc_auc": 0.9162946428571429,
+    "model_type": "random_forest_custom_with_dummies"
+  },
+  "best_model_name": "custom",
+  "best_model_roc_auc": 0.9162946428571429
+}
